@@ -69,7 +69,7 @@ class Notification < ActiveRecord::Base
         #Should send an email?
         if Mailboxer.uses_emails
           email_to = r.send(Mailboxer.email_method,self)
-          if send_mail and (not email_to.blank?)
+          if send_email and (not email_to.blank?)
             get_mailer.send_email(self,r).deliver
           end
         end
